@@ -39,14 +39,14 @@ email:{
     unique:true,
     validate: {
       validator: (email: string) => validator.isEmail(email),
-      message: "is not a valid email!"
+      message: "invalid email😕!"
     }
   },
   password:{
     type:String,
     required:true,
-    minlength :[9,"username most be 9 "],
-    maxlength:[9,"its bagger then 9"],
+    minlength :[9,"password most be 9 chars"],
+    maxlength:[9,"password most be 9 chars"],
   },
   grades:[GradSchame]
 

@@ -20,15 +20,18 @@ export const createToken = async (req: Request, res: Response, next: NextFunctio
     res.status(400).json({ error: "User ID is required to create a token." });
     return;
   }
-  const findUser = await studentModel.findOne({_id :id})|| await teacherModel.findOne({_id :id})
-  console.log(findUser)
-  if(!findUser){
-    res.status(402).json({error:"user not find"})
+  const user = await studentModel.findOne({_id :id})|| await teacherModel.findOne({_id :id});
+  console.log(user)
+  if(!user){
+    res.status(402).json({error:"user not found"})
     return
   }
-  // if(!await bcrypt.compare(password , findUser.password)){
-  //   res.status(401).json({error:"invalid password"})
-  // }
+  if(!user.password){
+    res.status(402).json({error:"user not found"})
+  }
+  if(!await bcrypt.compare(password , user.password as string)){
+    res.status(401).json({error:"invalid password"})
+  }
   
 
   const token = jwt.sign({ id }, SECRET_KEY, { expiresIn: "1h" });

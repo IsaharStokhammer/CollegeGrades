@@ -7,7 +7,6 @@ export interface ITeacher extends Document{
     email:string ,
     password:string,
     className :string
-    // classId : Types.ObjectId
 }
 
 const TeacherSchema= new Schema<ITeacher>({
@@ -24,22 +23,21 @@ const TeacherSchema= new Schema<ITeacher>({
         unique:true,
         validate: {
           validator: (email: string) => validator.isEmail(email),
-          message: "is not a valid email!"
+          message: "invalid email😕!"
         }
       },
       password:{
         type:String,
         required:true,
-        minlength :[9,"username most be 9 "],
-        maxlength:[9,"its bagger then 9"],
+        minlength :[9,"password most be 9 chars"],
+        maxlength:[9,"password most be 9 chars"],
       },
       className:{
         type:String,
         required:true,
-        minlength :[2,"username most be 9 "],
-        maxlength:[15,"its bagger then 9"]
+        minlength :[2,"className most be more then 2 chars"],
+        maxlength:[15,"className most be less then 15 chars"],
       }
-    //   classId:{type:Schema.Types.ObjectId,ref:"Classes"}
 
 })
 export default mongoose.model<ITeacher>("Teachers",TeacherSchema)

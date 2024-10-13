@@ -13,8 +13,8 @@ const ClassSchema = new Schema<IClass>({
         type:String,
         required:[true,"title is required"],
         unique:true,
-        minlength :[3,"username most by"],
-        maxlength:[30,"its bagger then 30 "]
+        minlength :[3,"username most by more then 3"],
+        maxlength:[30,"username most by less then 30"],
 
     },
     teacher:{

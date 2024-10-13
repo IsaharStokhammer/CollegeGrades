@@ -8,7 +8,10 @@ export const createTeacher = async (req:Request,res:Response,next:NextFunction)=
         const teacher:ITeacher = await Teacher.create(req.body);
         const classname = teacher.className;
         const teacherId = teacher._id;
-        const clas:IClass = await Class.create({classNane:classname,teacher:teacherId})
+        const clas:IClass = await Class.create({
+            classNane: classname,
+            teacher:teacherId
+        });
         res.status(201).json({idOfClass:clas._id})
     } catch (error) {
         
