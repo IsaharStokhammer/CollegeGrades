@@ -3,18 +3,18 @@ import mongoose, { Schema, Document, Types } from "mongoose";
 
 export interface IClass extends Document{
     _id:Types.ObjectId,
-    title:string,
+    className:string,
     teacher:Types.ObjectId
     students:Types.ObjectId[]
 
 }
 const ClassSchema = new Schema<IClass>({
-    title:{
+    className:{
         type:String,
-        required:[true,"title is required"],
+        required:[true,"className is required"],
         unique:true,
-        minlength :[3,"username most by more then 3"],
-        maxlength:[30,"username most by less then 30"],
+        minlength :[3,"className most by more then 3"],
+        maxlength:[30,"className most by less then 30"],
 
     },
     teacher:{
