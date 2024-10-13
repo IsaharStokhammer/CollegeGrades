@@ -27,6 +27,9 @@ const UserSchema = new mongoose_1.default.Schema({
                 subject: String,
                 score: Number,
             }]
+    },
+    className: {
+        type: String
     }
 });
 exports.default = mongoose_1.default.model("user", UserSchema);

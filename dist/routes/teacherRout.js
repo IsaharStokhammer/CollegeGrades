@@ -35,9 +35,7 @@ router.route("/allUsers").get(authMiddelewre_js_2.findUserByToken, teacherContro
  *                      properties:
  *                          fullName:
  *                              type: string
- *                          passportId:
- *                              type: number
- *                          role:
+ *                          email:
  *                              type: string
  *                          password:
  *                              type: string

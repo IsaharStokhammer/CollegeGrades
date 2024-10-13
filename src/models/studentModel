@@ -1,0 +1,47 @@
+import mongoose ,{Schema} from "mongoose";
+
+const studentSchema = new mongoose.Schema(
+    {
+        fullName:{
+            type:String,
+            required:[true,"please enter the full name"],
+            unique:[true,"name is already exists"]
+
+        },
+        email:{
+            type:String,
+            required: [true, "please enter the email"],        
+        },
+        password: {
+            type : String,
+            required: true            
+        },
+        teacher:{
+            type: Schema.Types.ObjectId,
+            ref: "teacher"
+        },
+        grades:{
+            type: [{
+                subject: String,
+                score: Number,
+            }]
+        },}
+
+)
+export default mongoose.model("student",studentSchema);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

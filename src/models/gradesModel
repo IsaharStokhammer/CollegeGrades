@@ -1,0 +1,37 @@
+import mongoose  from "mongoose";
+
+const gradesSchema = new mongoose.Schema(
+    {
+        student:{
+            type: [Schema.Types.ObjectId],
+            ref: "student"  
+        },
+        score:{
+            type:Number,
+            required:[true,"please enter the score"]
+        },
+        comment:{
+            type:String,
+            required:[true,"please enter the subject"]
+        }
+
+}
+
+)
+export default mongoose.model("grades",gradesSchema);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

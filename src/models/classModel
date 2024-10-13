@@ -10,6 +10,7 @@ const classSchema = new mongoose.Schema(
         },
         teacherId:{
             type:Schema.Types.ObjectId,
+            ref:"teacher",
             required:[true,"please enter teacherId"]
             
         },

@@ -32,9 +32,7 @@ router.route("/allUsers").get(findUserByToken, getAllUsers);
  *                      properties:
  *                          fullName:
  *                              type: string
- *                          passportId:
- *                              type: number
- *                          role:
+ *                          email:
  *                              type: string
  *                          password:
  *                              type: string
