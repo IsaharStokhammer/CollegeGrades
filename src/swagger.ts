@@ -1,21 +1,22 @@
+
 import swaggerJSDoc from "swagger-jsdoc";
 
-const swaggerDefinition ={
-    openapi: "3.0.0",
-    info: {
-        title: "College API",
-        version: "1.0.0",
-        description: "College API requests"
+const swaggerDefintion = {
+    openapi: '3.0.0',
+    info:{
+        title: "blog app",
+        version: '1.0.0',
+        description: 'this is the description of the blog app'
     },
     servers: [
         {
-            url: "http://localhost:3000"
+            url: 'http://localhost:3000'
         }
     ]
 }
 
 const options = {
-    definition: swaggerDefinition,
+    definition: swaggerDefintion,
     apis: ['./src/routes/*.ts','./src/app.ts']
 }
 
