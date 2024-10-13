@@ -23,6 +23,7 @@ export interface IStudent extends Document{
   fullName:string,
   email?:string,
   password?:string,
+  classId?:Types.ObjectId,
   grades:Types.ObjectId[]
 }
 const StudentSchema = new Schema<IStudent>({
@@ -33,7 +34,7 @@ const StudentSchema = new Schema<IStudent>({
     maxlength:[30,"its bagger then 30 "],
 
 },
-email:{
+  email:{
     type:String,
     required :[true,"user name is required"],
     unique:true,
@@ -42,13 +43,18 @@ email:{
       message: "invalid email😕!"
     }
   },
+  classId:{
+    type:Schema.Types.ObjectId,ref:"Classes",
+    required:[true,"classId is required"]
+  },
   password:{
     type:String,
     required:true,
     minlength :[9,"password most be 9 chars"],
     maxlength:[9,"password most be 9 chars"],
   },
-  grades:[GradSchame]
+  grades:[GradSchame],
+  
 
 })
 export default mongoose.model<IStudent>("Students",StudentSchema)

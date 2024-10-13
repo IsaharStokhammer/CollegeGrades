@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import teacherRouter from "./routes/teacherRoutes";
+import studentRouter from "./routes/studentRoutes";
 import userRouter from "./routes/userRoutes";
 import { errorHandler } from "./middleware/errorHandler";
 import connectDB from "./config/db";
@@ -18,6 +19,7 @@ app.use('/swagger',swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 connectDB();
 
 // Routes
+app.use("/student", studentRouter);
 app.use("/teacher", teacherRouter);
 app.use("/api/users", userRouter);
 

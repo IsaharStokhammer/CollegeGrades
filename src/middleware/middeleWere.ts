@@ -27,7 +27,7 @@ export const createToken = async (req: Request, res: Response, next: NextFunctio
     return
   }
   if(!user.password){
-    res.status(402).json({error:"user not found"})
+    res.status(402).json({error:"something went wrong"})
   }
   if(!await bcrypt.compare(password , user.password as string)){
     res.status(401).json({error:"invalid password"})
