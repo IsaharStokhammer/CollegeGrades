@@ -29,8 +29,7 @@ const TeacherSchema= new Schema<ITeacher>({
       password:{
         type:String,
         required:true,
-        minlength :[9,"password most be 9 chars"],
-        maxlength:[9,"password most be 9 chars"],
+        minlength :[9,"password most be 9 chars"]
       },
       className:{
         type:String,

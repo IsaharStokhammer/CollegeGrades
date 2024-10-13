@@ -51,7 +51,6 @@ const StudentSchema = new Schema<IStudent>({
     type:String,
     required:true,
     minlength :[9,"password most be 9 chars"],
-    maxlength:[9,"password most be 9 chars"],
   },
   grades:[GradSchame],
   
