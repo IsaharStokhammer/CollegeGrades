@@ -6,7 +6,6 @@ export interface IClass extends Document{
     className:string,
     teacher:Types.ObjectId
     students:Types.ObjectId[]
-
 }
 const ClassSchema = new Schema<IClass>({
     className:{
