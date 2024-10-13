@@ -2,9 +2,8 @@
   "name": "collegegrades",
   "version": "1.0.0",
   "main": "server.js",
-  "type": "module",
   "scripts": {
-    "start": "tsc && nodemon server.js",
+    "start": "tsc && nodemon ./dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

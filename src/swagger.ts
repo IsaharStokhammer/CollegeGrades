@@ -1,5 +1,4 @@
 import swaggerJSDoc from "swagger-jsdoc";
-import { serve } from "swagger-ui-express";
 
 const swaggerDefinition ={
     openapi: "3.0.0",
@@ -16,8 +15,8 @@ const swaggerDefinition ={
 }
 
 const options = {
-    swaggerDefinition,
-    apis: ["./routes/*.js", "./server.js", ]
+    definition: swaggerDefinition,
+    apis: ['./src/routes/*.ts','./src/app.ts']
 }
 
 export const swaggerSpec = swaggerJSDoc(options);

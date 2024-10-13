@@ -7,7 +7,7 @@ import { createNewPassword, authorization } from '../services/userService.js';
 
 export const createTeacher = async (req: express.Request, res: express.Response) => {
     try {
-        if(req.body.role != "student"){
+        if(req.body.role != "teacher"){
             res.status(400).json({message:"role must be 'teacher' 🧑‍🏫",success:false}) 
             return;
         }
