@@ -48,13 +48,13 @@ studentRouter.post("/register",createStudent, errorHandler);
  *                    schema:   
  *                      type: object    
  *                      properties:
- *                        fullName:
+ *                        email:
  *                          type: string
- *                          description: The name of the user 
+ *                          description: The email of the user 
  *                        password:
  *                          type: string
- *                          description: The email of the user
- *                      example: { fullName: "elli", password: "123456789", id: "670bb458dad2eb26ab4163c2" }
+ *                          description: The password of the user
+ *                      example: { email: "3@gmail.com", password: "123456789", id: "670bb458dad2eb26ab4163c2" }
  *     responses:    
  *       201:               
  *         description: A JSON of the created user

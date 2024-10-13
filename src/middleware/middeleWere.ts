@@ -13,15 +13,15 @@ const SECRET_KEY: string = process.env.SECRET_KEY || "your_secret_key_here";
 
 export const createToken = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 
-  const name = req.body.fullName;
+  const email = req.body.email;
   const password:string = req.body.password;
 
 
-  if (!name) {
+  if (!email) {
     res.status(400).json({ error: "User ID is required to create a token." });
     return;
   }
-  const user = await studentModel.findOne({fullName :name})|| await teacherModel.findOne({fullName :name});
+  const user = await studentModel.findOne({email :email})|| await teacherModel.findOne({email :email});
   console.log(user)
   if(!user){
     res.status(402).json({error:"user not found"})
@@ -69,9 +69,9 @@ export const findUserByToken = async (req: Request, res: Response, next: NextFun
     }
 
     try {
-      const decoded = jwt.verify(token, SECRET_KEY) as { id: string };
-
-      const user = await studentModel.findById(decoded.id)||await teacherModel.findById(decoded.id);
+      const decoded = jwt.verify(token, SECRET_KEY) as { email: string };
+      
+      const user = await studentModel.findOne({ email: decoded.email }) || await teacherModel.findOne({ email: decoded.email });
       if (!user) {
         res.status(404).json({ error: "User not found.", success: false });
       

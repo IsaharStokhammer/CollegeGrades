@@ -18,7 +18,7 @@ const teacherRouter = Router();
  *                    schema:   
  *                      type: object    
  *                      properties:
- *                        username:
+ *                        fullName:
  *                          type: string
  *                          description: The name of the user
  *                        email:
@@ -27,8 +27,10 @@ const teacherRouter = Router();
  *                        password:
  *                          type: string
  *                          description: The email of the user  
- *                      example: { username: "teacher1", email: "teacher1@me.com", password: "123456789" }
-  
+ *                        className:
+ *                          type: string
+ *                          description: The email of the user
+ *                      example: { fullName: "testingTeacher", email: "testingTeacher@me.com", password: "123456789", className: "class100" }  
  *     responses:    
  *       201:               
  *         description: A JSON of the created user
@@ -47,13 +49,14 @@ teacherRouter.post("/register",createTeacher);
  *                    schema:   
  *                      type: object    
  *                      properties:
- *                        username:
+ *                        email:
  *                          type: string
- *                          description: The name of the user
+ *                          description: The email of the teacher
  *                        password:
  *                          type: string
- *                          description: The email of the user  
- *                      example: { username: "teacher1", password: "123456789" }
+ *                          description: The email of the user
+
+ *                      example: { email: "100@gmail.com", password: "123456789"}
  *     responses:    
  *       201:               
  *         description: A JSON of the created user
