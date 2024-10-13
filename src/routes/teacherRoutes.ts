@@ -2,7 +2,10 @@ import { Router } from "express";
 import {createToken, findUserByToken}from "../middleware/middeleWere"
 import {
 createTeacher,
-addGrade, 
+addGrade,
+getAllStudents,
+getAllStudentsGrades, 
+editGrade
 } from "../controllers/teacherController";
 
 const teacherRouter = Router();
@@ -65,7 +68,7 @@ teacherRouter.post("/loginTeacher",createToken );
 /**
  * @swagger
  * /teacher/addGrade:
- *   post:  
+ *   put:  
  *     summary: Create a new teacher
  *     requestBody:
  *                required: true
@@ -89,8 +92,28 @@ teacherRouter.post("/loginTeacher",createToken );
  *         description: success
  */
 teacherRouter.put("/addGrade", addGrade);
-teacherRouter.get("/getAllStudents", );
-teacherRouter.post("/editGrade", );
+/**
+ * @swagger
+ * /teacher/getAllStudents:
+ *   get:  
+ *     summary: Get All Students of a teacher
+ *     requestBody:
+ *                required: true
+ *                content:                          
+ *                  application/json:
+ *                    schema:   
+ *                      type: object    
+ *                      properties:
+ *                        teacherId:
+ *                          type: string
+ *                          description: id of the student
+ *                      example: { teacherId: "670bb458dad2eb26ab4163c2" }
+ *     responses:    
+ *       201:               
+ *         description: success
+ */
+teacherRouter.get("/getAllStudents", getAllStudents);
+teacherRouter.put("/editGrade", editGrade);
 
 
 export default teacherRouter;
