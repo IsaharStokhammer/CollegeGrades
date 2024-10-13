@@ -81,3 +81,23 @@ export const editGrade = async (req:Request,res:Response,next:NextFunction)=>{
         next(error) 
     }
 };
+export const getAvgOfClass = async (req:Request,res:Response,next:NextFunction)=>{
+    try {
+        const avgGrade = await Student.aggregate([
+            { $match: { teacher: req.body.teacherId } },
+            { $unwind: "$grades" },
+            {
+                $group: {
+                    _id: "$teacher",
+                    avgGrade: { $avg: "$grades.grade" }
+                }
+            }
+        ]);
+        if(!avgGrade || avgGrade.length === 0){
+            throw new Error("no students in this class or teacher does not exist");
+        }
+        res.status(200).json({avgGrade: avgGrade[0].avgGrade});
+    } catch (error) {
+        next(error)
+    }
+};
