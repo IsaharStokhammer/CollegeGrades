@@ -6,7 +6,8 @@ export interface ITeacher extends Document{
     fullName :string,
     email:string ,
     password:string,
-    className :string
+    className :string,
+    role?:string
 }
 
 const TeacherSchema= new Schema<ITeacher>({
@@ -36,6 +37,10 @@ const TeacherSchema= new Schema<ITeacher>({
         required:true,
         minlength :[2,"className most be more then 2 chars"],
         maxlength:[15,"className most be less then 15 chars"],
+      },
+      role:{
+        type:String,
+        default:"teacher"
       }
 
 })

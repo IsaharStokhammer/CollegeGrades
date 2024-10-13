@@ -2,6 +2,7 @@ import { NextFunction,Request,Response } from "express";
 import Class, { IClass } from "../models/classModel";
 import Student ,{ IStudent,IGrads } from "../models/studentsModel";
 import Teacher ,{ITeacher} from "../models/teacherModel";
+import { findUserByToken } from "../middleware/middeleWere";
 
 export const createTeacher = async (req:Request,res:Response,next:NextFunction)=>{
     try {
@@ -27,6 +28,25 @@ export const getAllStudentsGrades = async (req:Request,res:Response,next:NextFun
     }
 };
 
-export const getAverageGrade = async (req:Request,res:Response,next:NextFunction)=>{
+export const addGrade = async (req:Request,res:Response,next:NextFunction)=>{
+
+    try {
+        await findUserByToken(req,res,next);
+        const teacher = req.body.user;
+        if(!teacher){
+            throw new Error("access denied🤐");
+        };
+        if(teacher.role !== "teacher"){
+            throw new Error("access denied, you are not a teacher");
+        }
+        const student: IStudent | null = await Student.findById(req.body.studentId);
+        if(!student){
+            throw new Error("student does not exist");
+        };
+        student.grades.push(req.body);
+        res.status(201).json({success: true});
+    } catch (error) {
+        next(error)        
+    }
 
 }
