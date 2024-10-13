@@ -4,32 +4,23 @@ const UserSchema = new mongoose.Schema(
     {
         fullName:{
             type:String,
-            required:[true,"please enter the full name"],
-            unique:[true,"name is already exists"]
+            required:[true,"please enter the full name"]
 
         },
-        passportId:{
-            type:Number,
-            required:true,
-            length:[9,"please enter 9 numbers"]
-            
-        }
-        ,role:{
+        email:{
             type:String,
-            required: true
-
-
+            required:[true,"please enter the email"]
+            
         },
         password: {
             type : String,
             required: true            
         },
-        grades:{
-            type: [{
-                subject: String,
-                score: Number
-            }]
-    }
+        role:{
+            type:String,
+            required: true
+        },
+        
 }
 
 )
